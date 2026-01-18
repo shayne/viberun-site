@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import s from "./Home.module.css";
 
 export default function Home() {
@@ -106,10 +107,12 @@ export default function Home() {
           </section>
 
           <section className={s.logoFooter}>
-            <img
+            <Image
               src="/viberun-logo.png"
               alt="Viberun logo"
               className={s.logo}
+              width={1024}
+              height={1024}
             />
           </section>
         </div>
