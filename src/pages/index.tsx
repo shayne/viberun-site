@@ -1,8 +1,34 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useCallback, useState } from "react";
 import s from "./Home.module.css";
 
 export default function Home() {
+  const installCommand = "curl -fsSL https://viberun.sh | sh";
+  const [isCopied, setIsCopied] = useState(false);
+
+  const copyToClipboard = useCallback(async () => {
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(installCommand);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = installCommand;
+        textarea.setAttribute("readonly", "true");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+      setIsCopied(true);
+      window.setTimeout(() => setIsCopied(false), 1200);
+    } catch {
+      // Ignore clipboard errors.
+    }
+  }, [installCommand]);
+
   return (
     <>
       <Head>
@@ -66,7 +92,39 @@ export default function Home() {
               <div className={s.panelHeader}>Install the client</div>
               <div className={s.panelSubheader}>curl it and go.</div>
               <pre className={s.codeBlock}>
-                <code>curl -fsSL https://viberun.sh | sh</code>
+                <code>{installCommand}</code>
+                <button
+                  className={`${s.copyButton} ${
+                    isCopied ? s.copyButtonSuccess : ""
+                  }`}
+                  type="button"
+                  aria-label={isCopied ? "Copied!" : "Copy command"}
+                  onClick={copyToClipboard}
+                >
+                  {isCopied ? (
+                    <svg
+                      className={s.copyIcon}
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M9.55 17.3 5.5 13.25l1.4-1.4 2.65 2.65L17.1 6.95l1.4 1.4Z"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className={s.copyIcon}
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1Zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H10V7h9v14Z"
+                      />
+                    </svg>
+                  )}
+                </button>
               </pre>
               <div className={s.panelFooter}>
                 Docs, roadmap, and technical details live on GitHub.
