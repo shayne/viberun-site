@@ -1,0 +1,37 @@
+{
+  "name": "viberun-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "opennextjs-cloudflare build",
+    "build:next": "next build",
+    "build:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache local",
+    "start": "next start",
+    "preview:cloudflare": "npm run build:cloudflare && wrangler dev",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
+    "lint": "next lint && prettier 'src/**/*.{ts,tsx}' --write"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "next": "15.5.9",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.14.6",
+    "@types/node": "20.14.13",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "eslint": "^8",
+    "eslint-config-next": "15.5.7",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^9.6.0",
+    "prettier": "3.4.2",
+    "typescript": "5.5.4"
+  },
+  "overrides": {
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3"
+  }
+}

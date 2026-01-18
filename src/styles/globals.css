@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  color-scheme: dark;
+  --bg-0: #04020a;
+  --bg-1: #0b0619;
+  --bg-2: #1a1030;
+  --grid-color: rgba(138, 63, 255, 0.22);
+  --neon-pink: #ff4fd8;
+  --neon-orange: #ff944d;
+  --neon-purple: #7f4bff;
+  --neon-cyan: #4ff2ff;
+  --text-strong: #fdf5ff;
+  --text: #c6b7ff;
+  --muted: #8a7bbf;
+  --card: rgba(10, 6, 20, 0.72);
+  --border: rgba(147, 88, 255, 0.32);
+  --shadow: rgba(6, 0, 20, 0.6);
+  --font-display: "Orbitron", "Space Grotesk", sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--neon-pink) 40%, transparent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}

@@ -1,0 +1,27 @@
+[tools]
+node = "20.14.0"
+"npm:wrangler" = "latest"
+
+[tasks.install]
+run = "npm install"
+
+[tasks.dev]
+run = "npm run dev"
+
+[tasks.build]
+run = "npm run build"
+
+[tasks.build-next]
+run = "npm run build:next"
+
+[tasks.build-cloudflare]
+run = "npm run build:cloudflare"
+
+[tasks.preview-cloudflare]
+run = "npm run preview:cloudflare"
+
+[tasks.deploy-cloudflare]
+run = "npm run deploy:cloudflare"
+
+[tasks.lint]
+run = "npm run lint"
