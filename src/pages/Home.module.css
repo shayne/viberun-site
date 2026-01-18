@@ -239,6 +239,49 @@
   gap: 18px;
 }
 
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faqHeader h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--text-strong);
+  margin-bottom: 6px;
+}
+
+.faqHeader p {
+  color: var(--muted);
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.faqCard {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(8, 6, 18, 0.6);
+  border: 1px solid rgba(127, 75, 255, 0.24);
+  box-shadow: 0 10px 22px var(--shadow);
+}
+
+.faqCard h3 {
+  font-size: 1rem;
+  color: var(--text-strong);
+  margin-bottom: 6px;
+}
+
+.faqCard p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
 .logoFooter {
   margin-top: 18px;
   display: flex;
@@ -278,6 +321,10 @@
   }
 
   .features {
+    grid-template-columns: 1fr;
+  }
+
+  .faqGrid {
     grid-template-columns: 1fr;
   }
 }

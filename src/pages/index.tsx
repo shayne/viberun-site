@@ -106,6 +106,43 @@ export default function Home() {
             </div>
           </section>
 
+          <section className={s.faq}>
+            <div className={s.faqHeader}>
+              <h2>FAQ</h2>
+              <p>Short answers for the obvious questions.</p>
+            </div>
+            <div className={s.faqGrid}>
+              <div className={s.faqCard}>
+                <h3>Is this for production?</h3>
+                <p>
+                  Not yet. Viberun is for prototyping and personal software.
+                  Think “build fast,” then eject when you’re ready to scale.
+                </p>
+              </div>
+              <div className={s.faqCard}>
+                <h3>Where does it run?</h3>
+                <p>
+                  On your own hardware or VM. You bring the compute; Viberun
+                  keeps everything inside a container per app.
+                </p>
+              </div>
+              <div className={s.faqCard}>
+                <h3>How many apps can I run?</h3>
+                <p>
+                  As many as your box can handle. No per‑app pricing, no hosted
+                  limits.
+                </p>
+              </div>
+              <div className={s.faqCard}>
+                <h3>Can I use external services?</h3>
+                <p>
+                  Yep. Keep everything inside the container or connect to
+                  managed services when you want.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section className={s.logoFooter}>
             <Image
               src="/viberun-logo.png"
