@@ -6,15 +6,15 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>viberun | Agent-native app hosting</title>
+        <title>viberun | self-hosted vibecoding runtime</title>
         <meta
           name="description"
-          content="Viberun is a CLI-first, agent-native app host. Run viberun <app> to drop into an AI agent session inside a persistent container with ports ready to go."
+          content="Viberun is a self-hosted vibecoding runtime. Run viberun <app> to drop into your favorite agent inside a persistent container, ready to build and run."
         />
         <meta property="og:title" content="viberun" />
         <meta
           property="og:description"
-          content="CLI-first agent-native app hosting. One command to start an AI agent session with persistent containers and web ports ready."
+          content="Self-hosted vibecoding runtime. One command drops you into your agent in a persistent container, ready to build and run."
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/viberun-logo.png" />
@@ -27,19 +27,20 @@ export default function Home() {
         <div className={s.content}>
           <header className={s.header}>
             <span className={s.headerKicker}>
-              CLI-first • Agent-native • Persistent
+              Self-hosted • Vibecoding • Personal software
             </span>
             <span className={s.headerTitle}>viberun</span>
           </header>
 
           <section className={s.heroGrid}>
             <div className={s.heroCopy}>
-              <p className={s.kicker}>Run agent-native apps in one command.</p>
-              <h1>Drop into an AI agent session with your app already wired.</h1>
+              <p className={s.kicker}>Build and run in one interface.</p>
+              <h1>Your agent, your container, ready to vibe.</h1>
               <p className={s.subtitle}>
-                Viberun is a developer tool that spins up a persistent container
-                per app, starts the agent inside a real PTY, and maps ports so you
-                can build, run, and iterate fast.
+                Run <strong>viberun my-cool-app</strong> and you land inside your
+                favorite agent in a persistent sandbox that’s already wired to
+                run your app. Our skills handle the service setup so you can
+                focus on building.
               </p>
               <div className={s.actions}>
                 <a
@@ -56,20 +57,19 @@ export default function Home() {
               </div>
               <div className={s.heroMeta}>
                 <span>viberun &lt;app&gt; to start</span>
-                <span>Agent providers built-in</span>
-                <span>Containers keep state</span>
+                <span>Codex, Claude Code, Gemini</span>
+                <span>One container per app</span>
               </div>
             </div>
 
             <div className={s.heroPanel} id="install">
-              <div className={s.panelHeader}>Install in seconds</div>
-              <div className={s.panelSubheader}>One line. No setup docs.</div>
+              <div className={s.panelHeader}>Install the client</div>
+              <div className={s.panelSubheader}>curl it and go.</div>
               <pre className={s.codeBlock}>
                 <code>curl -fsSL https://viberun.sh | sh</code>
               </pre>
               <div className={s.panelFooter}>
-                This site is the teaser. The deep technical details live on
-                GitHub.
+                Docs, roadmap, and technical details live on GitHub.
               </div>
               <a
                 className={s.panelLink}
@@ -84,24 +84,24 @@ export default function Home() {
 
           <section className={s.features}>
             <div className={s.featureCard}>
-              <h3>CLI + daemon + container</h3>
+              <h3>One command to start</h3>
               <p>
-                A clear three-part architecture: client CLI, host daemon, and an
-                Ubuntu-based agent runtime.
+                Spin up a fresh app environment and jump straight into your
+                agent without wrangling infra.
               </p>
             </div>
             <div className={s.featureCard}>
-              <h3>Persistent app state</h3>
+              <h3>Persistent sandboxes</h3>
               <p>
-                Containers live with your app. Reconnect, snapshot, and keep
-                iterating without re-provisioning.
+                Each app gets its own long‑lived container so you can pick up
+                where you left off.
               </p>
             </div>
             <div className={s.featureCard}>
-              <h3>Ports already mapped</h3>
+              <h3>Local access, zero fuss</h3>
               <p>
-                Web apps come up on predictable ports so you can hit localhost
-                immediately.
+                Visit your app locally while it runs on your own hardware, no
+                extra wiring required.
               </p>
             </div>
           </section>
