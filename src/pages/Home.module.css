@@ -103,6 +103,10 @@
   align-items: center;
 }
 
+.heroGrid > * {
+  min-width: 0;
+}
+
 .heroCopy {
   display: flex;
   flex-direction: column;
@@ -197,6 +201,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  position: relative;
 }
 
 .panelHeader {
@@ -282,6 +287,50 @@
 .panelLink {
   font-weight: 600;
   color: var(--neon-pink);
+}
+
+.heroPanelPulse {
+  animation: heroPanelPulse 1.4s ease-out;
+}
+
+.heroPanelPulse .codeBlock {
+  animation: codeBlockPulse 1.4s ease-out;
+}
+
+@keyframes heroPanelPulse {
+  0% {
+    box-shadow: 0 24px 60px rgba(6, 0, 20, 0.6);
+    transform: translateY(0);
+  }
+  35% {
+    box-shadow:
+      0 24px 60px rgba(6, 0, 20, 0.6),
+      0 0 0 1px rgba(79, 242, 255, 0.55),
+      0 0 28px rgba(79, 242, 255, 0.35),
+      0 0 60px rgba(255, 79, 216, 0.35);
+    transform: translateY(-2px);
+  }
+  100% {
+    box-shadow: 0 24px 60px rgba(6, 0, 20, 0.6);
+    transform: translateY(0);
+  }
+}
+
+@keyframes codeBlockPulse {
+  0% {
+    border-color: rgba(255, 79, 216, 0.4);
+    box-shadow: inset 0 0 24px rgba(255, 79, 216, 0.15);
+  }
+  40% {
+    border-color: rgba(79, 242, 255, 0.85);
+    box-shadow:
+      inset 0 0 28px rgba(79, 242, 255, 0.35),
+      0 0 24px rgba(79, 242, 255, 0.25);
+  }
+  100% {
+    border-color: rgba(255, 79, 216, 0.4);
+    box-shadow: inset 0 0 24px rgba(255, 79, 216, 0.15);
+  }
 }
 
 .features {
@@ -398,5 +447,12 @@
 @media (hover: none) {
   .copyButton {
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroPanelPulse,
+  .heroPanelPulse .codeBlock {
+    animation: none;
   }
 }

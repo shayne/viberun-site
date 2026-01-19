@@ -1,11 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import s from "./Home.module.css";
 
 export default function Home() {
   const installCommand = "curl -fsSL https://viberun.sh | sh";
   const [isCopied, setIsCopied] = useState(false);
+  const [installPulse, setInstallPulse] = useState(false);
+  const installPulseTimeoutRef = useRef<number | null>(null);
 
   const copyToClipboard = useCallback(async () => {
     try {
@@ -28,6 +30,31 @@ export default function Home() {
       // Ignore clipboard errors.
     }
   }, [installCommand]);
+
+  const triggerInstallPulse = useCallback(() => {
+    if (installPulseTimeoutRef.current) {
+      window.clearTimeout(installPulseTimeoutRef.current);
+    }
+    setInstallPulse(false);
+    window.requestAnimationFrame(() => {
+      setInstallPulse(true);
+      installPulseTimeoutRef.current = window.setTimeout(
+        () => setInstallPulse(false),
+        1400
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    if (window.location.hash === "#install") {
+      triggerInstallPulse();
+    }
+    return () => {
+      if (installPulseTimeoutRef.current) {
+        window.clearTimeout(installPulseTimeoutRef.current);
+      }
+    };
+  }, [triggerInstallPulse]);
 
   return (
     <>
@@ -77,7 +104,11 @@ export default function Home() {
                 >
                   View on GitHub
                 </a>
-                <a className={s.secondaryButton} href="#install">
+                <a
+                  className={s.secondaryButton}
+                  href="#install"
+                  onClick={triggerInstallPulse}
+                >
                   Install
                 </a>
               </div>
@@ -88,7 +119,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className={s.heroPanel} id="install">
+            <div
+              className={`${s.heroPanel} ${
+                installPulse ? s.heroPanelPulse : ""
+              }`}
+              id="install"
+            >
               <div className={s.panelHeader}>Install the client</div>
               <div className={s.panelSubheader}>curl it and go.</div>
               <pre className={s.codeBlock}>
