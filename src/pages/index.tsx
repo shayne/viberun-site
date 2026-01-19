@@ -93,7 +93,8 @@ export default function Home() {
                 Run <strong>viberun my-cool-app</strong> and you land inside your
                 favorite agent in a persistent sandbox that’s already wired to
                 run your app. Our skills handle the service setup so you can
-                focus on building.
+                focus on building. When you need to share, flip on a public URL
+                that’s private by default with built‑in auth.
               </p>
               <div className={s.actions}>
                 <a
@@ -115,7 +116,7 @@ export default function Home() {
               <div className={s.heroMeta}>
                 <span>viberun &lt;app&gt; to start</span>
                 <span>Codex, Claude Code, Gemini</span>
-                <span>One container per app</span>
+                <span>Public URLs, private by default</span>
               </div>
             </div>
 
@@ -192,10 +193,10 @@ export default function Home() {
               </p>
             </div>
             <div className={s.featureCard}>
-              <h3>Local access, zero fuss</h3>
+              <h3>Share safely when you want</h3>
               <p>
-                Visit your app locally while it runs on your own hardware, no
-                extra wiring required.
+                Turn on a public URL for any app. It ships private by default
+                with built‑in auth, so you control access from day one.
               </p>
             </div>
           </section>
