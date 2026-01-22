@@ -3,11 +3,21 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import s from "./Home.module.css";
 
+const installOptions = [
+  { id: "npx", label: "NPX", command: "npx viberun@latest" },
+  { id: "uvx", label: "UVX", command: "uvx viberun@latest" },
+  { id: "curl", label: "curl", command: "curl -fsSL https://viberun.sh | sh" },
+];
+
 export default function Home() {
-  const installCommand = "curl -fsSL https://viberun.sh | sh";
+  const [installChoice, setInstallChoice] = useState(installOptions[0].id);
   const [isCopied, setIsCopied] = useState(false);
   const [installPulse, setInstallPulse] = useState(false);
   const installPulseTimeoutRef = useRef<number | null>(null);
+  const selectedInstallOption =
+    installOptions.find((option) => option.id === installChoice) ??
+    installOptions[0];
+  const installCommand = selectedInstallOption.command;
 
   const copyToClipboard = useCallback(async () => {
     try {
@@ -62,7 +72,7 @@ export default function Home() {
         <title>viberun | self-hosted vibecoding runtime</title>
         <meta
           name="description"
-          content="Viberun is a self-hosted vibecoding runtime. Run viberun <app> to drop into your favorite agent inside a persistent container, ready to build and run."
+          content="Viberun is a self-hosted vibecoding runtime. Run viberun to drop into your agent inside a persistent container, ready to build and run."
         />
         <meta property="og:title" content="viberun" />
         <meta
@@ -90,11 +100,12 @@ export default function Home() {
               <p className={s.kicker}>Build and run in one interface.</p>
               <h1>Your agent, your container, ready to vibe.</h1>
               <p className={s.subtitle}>
-                Run <strong>viberun my-cool-app</strong> and you land inside your
-                favorite agent in a persistent sandbox that’s already wired to
-                run your app. Our skills handle the service setup so you can
-                focus on building. When you need to share, flip on a public URL
-                that’s private by default with built‑in auth.
+                Run <strong>viberun</strong> and you land inside your favorite
+                agent in a persistent sandbox that’s already wired to run your
+                app. The shell is where you pick or create apps, start servers,
+                and ship. Our skills handle the service setup so you can focus
+                on building. When you need to share, flip on a public URL that’s
+                private by default with built‑in auth.
               </p>
               <div className={s.actions}>
                 <a
@@ -114,9 +125,8 @@ export default function Home() {
                 </a>
               </div>
               <div className={s.heroMeta}>
-                <span>viberun &lt;app&gt; to start</span>
                 <span>Codex, Claude Code, Gemini</span>
-                <span>Public URLs, private by default</span>
+                <span>Shareable URLs with login</span>
               </div>
             </div>
 
@@ -127,7 +137,26 @@ export default function Home() {
               id="install"
             >
               <div className={s.panelHeader}>Install the client</div>
-              <div className={s.panelSubheader}>curl it and go.</div>
+              <div className={s.panelSubheader}>Pick your installer.</div>
+              <div
+                className={s.installSelector}
+                role="group"
+                aria-label="Install command options"
+              >
+                {installOptions.map((option) => (
+                  <button
+                    key={option.id}
+                    className={`${s.selectorButton} ${
+                      installChoice === option.id ? s.selectorButtonActive : ""
+                    }`}
+                    type="button"
+                    onClick={() => setInstallChoice(option.id)}
+                    aria-pressed={installChoice === option.id}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
               <pre className={s.codeBlock}>
                 <code>{installCommand}</code>
                 <button
@@ -181,8 +210,8 @@ export default function Home() {
             <div className={s.featureCard}>
               <h3>One command to start</h3>
               <p>
-                Spin up a fresh app environment and jump straight into your
-                agent without wrangling infra.
+                Run <strong>viberun</strong> to open the shell, then pick an app
+                and start building instantly.
               </p>
             </div>
             <div className={s.featureCard}>
