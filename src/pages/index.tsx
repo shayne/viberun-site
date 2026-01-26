@@ -104,8 +104,8 @@ export default function Home() {
                 agent in a persistent sandbox that’s already wired to run your
                 app. The shell is where you pick or create apps, start servers,
                 and ship. Our skills handle the service setup so you can focus
-                on building. When you need to share, flip on a public URL that’s
-                private by default with built‑in auth.
+                on building. When you need to share, flip on a public URL with
+                built‑in auth that requires login by default.
               </p>
               <div className={s.actions}>
                 <a
@@ -224,8 +224,8 @@ export default function Home() {
             <div className={s.featureCard}>
               <h3>Share safely when you want</h3>
               <p>
-                Turn on a public URL for any app. It ships private by default
-                with built‑in auth, so you control access from day one.
+                Turn on a public URL for any app. Public URLs require login by
+                default with built‑in auth, so you control access from day one.
               </p>
             </div>
           </section>
